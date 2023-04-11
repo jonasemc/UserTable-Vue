@@ -3,9 +3,11 @@
     <h1>Tabela de Usuários</h1>
     <div class="button-box">
       <RouterLink to="Register">
-        <button class="add-button">Adicionar Usuário</button>
+        <button class="add-button">
+          <img class="add-img" src="../assets/add.png" alt="Adicionar" />
+          Adicionar Usuário
+        </button>
       </RouterLink>
-      <button class="remove-button">Remover Usuário</button>
     </div>
     <div class="table-box">
       <table>
@@ -15,6 +17,7 @@
             <th>Empresa</th>
             <th>Cidade</th>
             <th>Telefone</th>
+            <th>-</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +26,11 @@
             <td>{{ user.company }}</td>
             <td>{{ user.city }}</td>
             <td>{{ user.phone }}</td>
+            <td>
+              <button class="remove-button" @click="deleteUser(user.id)">
+                <img src="../assets/excluir.png" alt="Excluir" />
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -44,6 +52,15 @@ export default {
       const data = await req.json();
 
       this.users = data;
+    },
+    async deleteUser(id) {
+      const req = await fetch(`http://localhost:3000/users/${id}`, {
+        method: "DELETE",
+      });
+
+      const res = await req.json();
+
+      this.getUsers();
     },
   },
   mounted() {
@@ -75,23 +92,34 @@ h1 {
   margin: 0 1rem 0 1rem;
   border: none;
   background-color: #f7c04a;
-  border-radius: 6px;
+  border-radius: 50px;
   color: #1b1b1b;
   font-weight: bold;
   font-size: 0.9rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .remove-button {
-  height: 3.5rem;
-  width: 12rem;
-  margin: 0 0 0 1rem;
+  height: 2.5rem;
+  width: 2.5rem;
   border: none;
-  background-color: #ff0303;
+  background-color: #fff;
   border-radius: 6px;
   color: #fff;
   font-weight: bold;
   font-size: 0.9rem;
   cursor: pointer;
+  padding: 0;
+}
+img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.add-img {
+  margin-right: 10px;
 }
 
 table,

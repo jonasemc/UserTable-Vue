@@ -46,7 +46,7 @@
         <div class="input-container">
           <div class="button-box">
             <router-link to="/">
-              <button class="cancel-button">Cancelar</button>
+              <button class="cancel-button">Voltar</button>
             </router-link>
             <input type="submit" value="Cadastrar" class="submit-button" />
           </div>
@@ -116,8 +116,8 @@ export default {
   margin: 0 1rem 0 1rem;
   border: none;
   background-color: #f7c04a;
-  border-radius: 6px;
-  color: #fff;
+  border-radius: 50px;
+  color: #1b1b1b;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -130,10 +130,10 @@ export default {
   height: 3.5rem;
   width: 12rem;
   margin: 0 0 0 1rem;
-  border: none;
-  background-color: #ff0303;
-  border-radius: 6px;
-  color: #fff;
+  border: solid 3.5px #f7c04a;
+  border-radius: 50px;
+  color: #1b1b1b;
+  background-color: #fff;
   font-weight: bold;
   font-size: 1rem;
 }
